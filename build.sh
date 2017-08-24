@@ -16,9 +16,3 @@ for f in $recipeFolders; do
   echo "Starting build for $f"
   conda build $f --old-build-string -q
 done
-cd ..
-cp -a ~/miniconda2/conda-bld/linux-64 .
-echo
-echo
-echo
-cd linux-64 && ls
