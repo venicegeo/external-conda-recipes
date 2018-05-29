@@ -27,8 +27,7 @@ node {
 
     stage("Docker") {
         sh """mkdir -p docker/share
-          mv recipes docker/share/
-          mv vendor docker/share/"""
+          mv recipes docker/share/"""
         dir("docker") {
 	    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "${env.ARTIFACT_READ_ONLY_CREDS}", usernameVariable: 'NEXUSUSER', passwordVariable: 'NEXUSPASS']]) {
                 sh """
