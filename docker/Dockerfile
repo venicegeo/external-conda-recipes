@@ -2,10 +2,24 @@ FROM centos:centos7
 
 WORKDIR /root
 
-RUN yum -y install epel-release && yum -y update &&\
-    yum -y install --setopt=tsflags=nodocs zlib-devel wget gcc gcc-c++ autogen libtool make autoconf\
-    automake freetype-devel SDL-devel python-devel python-pip bzip2 swig\
-    openssl-devel || true &&\
+RUN yum -y update &&\
+    yum -y install epel-release &&\
+    yum -y install zlib-devel &&\
+    yum -y install wget &&\
+    yum -y install gcc &&\
+    yum -y install gcc-c++ &&\
+    yum -y install autogen &&\
+    yum -y install libtool &&\
+    yum -y install make &&\
+    yum -y install autoconf &&\
+    yum -y install automake &&\
+    yum -y install freetype-devel &&\
+    yum -y install SDL-devel &&\
+    yum -y install python-devel &&\
+    yum -y install python-pip &&\
+    yum -y install bzip2 &&\
+    yum -y install swig &&\
+    yum -y install openssl-devel &&\
     curl -L https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -o miniconda.sh &&\
     /usr/bin/bash miniconda.sh -b -p $HOME/miniconda2 &&\
     rm miniconda.sh &&\
