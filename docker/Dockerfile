@@ -2,7 +2,7 @@ FROM centos:centos7
 
 WORKDIR /root
 
-RUN yum -y update &&\
+RUN yum -y update || true &&\
     yum -y install epel-release &&\
     yum -y install zlib-devel &&\
     yum -y install wget &&\
