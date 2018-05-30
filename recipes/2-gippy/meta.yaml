@@ -1,6 +1,6 @@
 package:
   name: gippy
-  version: 1.0.0
+  version: 1.0.0.post3
 
 source:
   url: https://pypi.python.org/packages/80/39/620a9b147adce81e58a77aac0866ad0d6e18662b0374475eba793125345b/gippy-1.0.0.post3.tar.gz
