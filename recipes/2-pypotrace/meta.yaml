@@ -12,12 +12,12 @@ requirements:
     - python 2.7.13
     - numpy 1.12.0 py27_blas_openblas_200
     - libagg 2.5.0
-    - potrace 1.11
+    - potrace 1.15
   run:
     - python 2.7.13
     - numpy 1.12.0 py27_blas_openblas_200
     - libagg 2.5.0
-    - potrace 1.11
+    - potrace 1.15
 
 build:
   string: py{{py}}_0
