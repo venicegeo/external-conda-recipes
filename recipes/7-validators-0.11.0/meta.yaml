@@ -13,13 +13,13 @@ build:
 
 requirements:
   build:
-    - python
-    - setuptools
+    - python 2.7.13
+    - setuptools 39.2.0
     - six 1.10.0
     - decorator 4.0.10
 
   run:
-    - python
+    - python 2.7.13
     - six 1.10.0
     - decorator 4.0.10
 

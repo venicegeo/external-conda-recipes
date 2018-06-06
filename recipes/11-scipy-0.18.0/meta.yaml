@@ -13,18 +13,17 @@ build:
 requirements:
   build:
     - toolchain
-    - gcc          # [osx]
-    - python
+    - python 2.7.13
     - setuptools
     - cython
     - blas 1.1 openblas
-    - libgfortran  # [linux]
+    - libgfortran 3.0.0
     - openblas 0.2.20|0.2.20*
     - numpy 1.14.0 py27_blas_openblas_200
   run:
-    - python
+    - python 2.7.13
     - blas 1.1 openblas
-    - libgfortran
+    - libgfortran 3.0.0
     - openblas 0.2.20|0.2.20*
     - numpy 1.14.0 py27_blas_openblas_200
 

@@ -13,14 +13,14 @@ build:
 
 requirements:
   build:
-    - python
-    - setuptools
-    - numpy 1.11.1
-    - scipy 0.18.0
+    - python 2.7.13
+    - setuptools 39.2.0
+    - numpy 1.14.0 py27_blas_openblas_200
+    - scipy 0.18.0 blas_openblas_np114
   run:
-    - python
-    - numpy 1.11.1
-    - scipy 0.18.0
+    - python 2.7.13
+    - numpy 1.14.0 py27_blas_openblas_200
+    - scipy 0.18.0 blas_openblas_np114
 
 test:
   imports:

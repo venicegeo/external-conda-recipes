@@ -12,8 +12,8 @@ source:
 
 requirements:
   build:
-    - python
-    - setuptools
+    - python 2.7.13
+    - setuptools 39.2.0
     - sqlalchemy 1.0.14
     - wtforms 2.1
     - wtforms-components 0.10.0
@@ -21,7 +21,7 @@ requirements:
     - six 1.10.0
 
   run:
-    - python
+    - python 2.7.13
     - sqlalchemy 1.0.14
     - wtforms 2.1
     - wtforms-components 0.10.0
