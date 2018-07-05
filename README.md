@@ -2,7 +2,7 @@
 
 Provisioning Nexus for Beachfront dependencies. 
 
-##Purpose
+## Purpose
 
 The purpose of this repository to provision the Nexus repository with all of the dependencies (direct & transitive) that Beachfront projects require. This includes the `bf-tideprediction` and `pzsvc-ndwi-py` projects. Those projects will declare required dependencies in their respective `environment.yml` files; while this repository will be responsible for uploading all of those dependencies into Nexus. 
 
