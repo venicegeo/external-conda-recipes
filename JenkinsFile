@@ -22,29 +22,34 @@ node {
 
 	stage("Setup") {
 		deleteDir()
-	  	git url: "${env.GIT_URL}", branch: "${env.GIT_BRANCH}"
-    }
+	  git url: "${env.GIT_URL}", branch: "${env.GIT_BRANCH}"
+  }
 
-    stage("Docker") {
-        sh """mkdir -p docker/share
-          mv recipes docker/share/"""
-        dir("docker") {
-	    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "${env.ARTIFACT_READ_ONLY_CREDS}", usernameVariable: 'NEXUSUSER', passwordVariable: 'NEXUSPASS']]) {
-                sh """
-		  sed -i "s*SED_CHANNEL*$CONDA_CHANNEL_URL*g" recipe-script.sh
-		  sed -i "s*SED_USER*$NEXUSUSER*g" recipe-script.sh
-		  sed -i "s*SED_PASSWORD*$NEXUSPASS*g" recipe-script.sh
-	          docker-compose rm -f --all
-                  docker-compose up --build --no-color"""
-	    }
-	}
+  stage("Populate Dependencies") {
+    sh """
+      mkdir -p docker/share
+      mv recipes docker/share/
+    """
+    dir("docker") {
+      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "${env.ARTIFACT_READ_ONLY_CREDS}", usernameVariable: 'NEXUSUSER',passwordVariable: 'NEXUSPASS']]) {
+        sh """
+          sed -i "s*SED_CHANNEL*$CONDA_CHANNEL_URL*g" recipe-script.sh
+          sed -i "s*SED_USER*$NEXUSUSER*g" recipe-script.sh
+          sed -i "s*SED_PASSWORD*$NEXUSPASS*g" recipe-script.sh
+          docker-compose rm -f --all
+          docker-compose up --build --no-color
+        """
+      }
     }
-    
-    stage("Nexus Deploy") {
-        dir ("docker/share") {
-            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "${env.ARTIFACT_STORAGE_CREDS}", usernameVariable: 'NEXUSUSER', passwordVariable: 'NEXUSPASS']]) {
-		sh 'for f in $(find linux-64 -type f); do curl -T $f -u $NEXUSUSER:$NEXUSPASS $CONDA_CHANNEL_URL/$f; done'
-            }
-        }
+  }
+  
+  stage("Nexus Publish") {
+    // Push these dependencies to Nexus
+    dir ("docker/share") {
+      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "${env.ARTIFACT_STORAGE_CREDS}", usernameVariable: 'NEXUSUSER', passwordVariable: 'NEXUSPASS']]) {
+          sh 'for f in $(find linux-64 -type f); do curl -T $f -u $NEXUSUSER:$NEXUSPASS $CONDA_CHANNEL_URL/$f; done'
+      }
     }
+  }
+
 }
