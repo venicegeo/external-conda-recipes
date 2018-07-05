@@ -22,7 +22,7 @@ node {
 
 	stage("Setup") {
 		deleteDir()
-	  git url: "${env.GIT_URL}", branch: "${env.GIT_BRANCH}"
+	  git url: "${env.GIT_URL}", branch: "Sanity" // "${env.GIT_BRANCH}"
   }
 
   stage("Provision Dependencies") {
