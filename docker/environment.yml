@@ -67,7 +67,7 @@ dependencies:
   - openblas=0.2.20
   - openjpeg=2.1.2
   - openssl=1.0.2o
-  - patchelf=0.9.2
+  - patchelf=0.9
   - pbr=4.0.4
   - pcre=8.41
   - phonenumbers=7.2.4

@@ -17,7 +17,9 @@ conda config --add channels local
 
 # Install all of the dependencies required for the recipe builds
 echo "Downloading public prerequisites"
-conda env create -f ~/environment.yml
+while read f; do
+  conda install -f -y $f
+done < ~/conda_installs
 conda index ~/miniconda2/pkgs
 
 # Remove the public channels so ensure that no versions that we do not specify are accidentally pulled in
