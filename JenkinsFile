@@ -25,7 +25,7 @@ node {
 	  git url: "${env.GIT_URL}", branch: "${env.GIT_BRANCH}"
   }
 
-  stage("Populate Dependencies") {
+  stage("Provision Dependencies") {
     sh """
       mkdir -p docker/share
       mv recipes docker/share/
