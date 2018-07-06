@@ -46,7 +46,7 @@ node {
   stage("Dependency Report") {
     // Report all dependencies that will be pushed to Nexus for easy listing
     dir("docker/share") {
-      sh "for f in $(find linux-64 -type f); echo $f; done"
+      sh 'for f in $(find linux-64 -type f); do echo $f; done'
     }
   }
   
