@@ -22,11 +22,6 @@ while read f; do
 done < ~/conda_installs
 conda index ~/miniconda2/pkgs
 
-# Remove the public channels so ensure that no versions that we do not specify are accidentally pulled in
-conda config --remove channels conda-forge
-conda config --remove channels bioconda
-conda config --remove channels defaults
-
 # Loop through each Recipe folder and build it
 echo "Building recipes"
 cd share/recipes
