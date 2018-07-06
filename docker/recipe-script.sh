@@ -18,6 +18,7 @@ conda config --add channels local
 # Install all of the dependencies required for the recipe builds
 echo "Downloading public prerequisites"
 while read f; do
+  echo "Installing $f"
   conda install -f -y $f
 done < ~/conda_installs
 conda index ~/miniconda2/pkgs
@@ -33,11 +34,12 @@ done
 cd
 
 # Update the Conda index to the specified linux-64 directory
+echo "Colleting artifacts"
 mkdir linux-64 && cd linux-64
 mv ~/miniconda2/conda-bld/linux-64/* .
 mv ~/miniconda2/pkgs/*.tar.bz2 .
 
-# Anything remaining in the Share will be pushed to Nexus in the JenkinsFile
+# Share will be pushed to Nexus in the JenkinsFile
 cd ..
 mv linux-64 share/
 

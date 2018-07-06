@@ -10,6 +10,10 @@ Updating a dependency in either `bf-tideprediction`, `pzsvc-ndwi-py`, or any of 
 
 This repository pulls artifacts from all sources of the open internet. Meanwhile, every other project in VeniceGeo must only be allowed to pull its dependencies from the Nexus Conda channel. As such, this should be the only point of origin for any dependency that is not built directly by VeniceGeo projects.
 
+## Installation Folder
+
+The `conda_installs` file lists all of the dependencies that are required by either the Recipes contained in this repository, or the other VeniceGeo repositories. This file contains the artifact and explicit version of all dependencies. During the JenkinsFile build, `conda install` will be run on each of these dependencies. As such, if any new dependency is required by any of the repositories, it must be added to the `conda_installs` file.
+
 ## Recipes
 
 While most dependencies can be pulled from public Conda channels such as `bioconda`, there are some dependencies that do not have any Conda recipes at all. As such, this repository declares the `recipes` folder as a series of recipes used to build those such dependencies. 
