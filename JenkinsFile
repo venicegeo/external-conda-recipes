@@ -47,7 +47,7 @@ node {
     // Report all dependencies that will be pushed to Nexus for easy listing
     dir("docker/share") {
       echo "Dependencies generated:"
-      sh 'for f in $(find linux-64 -type f); echo $f; done'
+      sh """for f in $(find linux-64 -type f); echo $f; done"""
     }
   }
   
