@@ -50,13 +50,13 @@ node {
     }
   }
   
-//  stage("Nexus Publish") {
-//    // Push these dependencies to Nexus
-//    dir("docker/share") {
-//      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "${env.ARTIFACT_STORAGE_CREDS}", usernameVariable: 'NEXUSUSER', passwordVariable: 'NEXUSPASS']]) {
-//        sh 'for f in $(find linux-64 -type f); do curl -T $f -u $NEXUSUSER:$NEXUSPASS $CONDA_CHANNEL_URL/$f; done'
-//      }
-//    }
-//  }
+  stage("Nexus Publish") {
+    // Push these dependencies to Nexus
+    dir("docker/share") {
+      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "${env.ARTIFACT_STORAGE_CREDS}", usernameVariable: 'NEXUSUSER', passwordVariable: 'NEXUSPASS']]) {
+        sh 'for f in $(find linux-64 -type f); do curl -T $f -u $NEXUSUSER:$NEXUSPASS $CONDA_CHANNEL_URL/$f; done'
+      }
+    }
+  }
 
 }
