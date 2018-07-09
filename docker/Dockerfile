@@ -29,5 +29,7 @@ RUN yum -y update || true &&\
     tar -C /usr/local -xzf go1.7.linux-amd64.tar.gz
 
 ADD recipe-script.sh /root/
+ADD environment.yml /root/
+ADD conda_installs /root/
 
 CMD chmod 755 recipe-script.sh && ./recipe-script.sh
